@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  require "open-uri"
+
   def index
     @recipe = Recipe.all
   end
@@ -9,6 +11,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(params[:article])
+
     if @recipe.save
       redirect_to "/recipes/index"
     else
